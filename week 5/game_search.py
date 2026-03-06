@@ -8,7 +8,6 @@ def minimax(ai):
     if win('O'): return 1
     if win('X'): return -1
     if full(): return 0
-
     best = -2 if ai else 2
     for i in range(9):
         if board[i]==' ':
@@ -17,7 +16,6 @@ def minimax(ai):
             board[i] = ' '
             best = max(best,val) if ai else min(best,val)
     return best
-
 def best_move():
     move, best = -1, -2
     for i in range(9):
@@ -28,7 +26,6 @@ def best_move():
             if val>best:
                 best,move = val,i
     return move
-
 while not win('X') and not win('O') and not full():
     print(board[0:3],"\n",board[3:6],"\n",board[6:9])
     m = int(input("Move(0-8): "))
@@ -36,9 +33,7 @@ while not win('X') and not win('O') and not full():
         board[m]='X'
         if not win('X') and not full():
             board[best_move()]='O'
-
 print(board[0:3],"\n",board[3:6],"\n",board[6:9])
 if win('X'): print("You win")
 elif win('O'): print("AI wins")
 else: print("Draw")
-
